@@ -20,7 +20,7 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-Route::middleware(['Auth'])->group(function(){
+Route::middleware(['auth'])->group(function(){
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::middleware(['admin'])->group(function(){
         Route::get('admin',[AdminController::class,'index']);
@@ -29,8 +29,9 @@ Route::middleware(['Auth'])->group(function(){
         Route::get('user',[UserController::class,'index']);
     });
     Route::get('/logout', function(){
-        Auth::logout();
-        redirect('/');
+         Auth::logout();
+         return redirect('/');
     });
+    
 });
 

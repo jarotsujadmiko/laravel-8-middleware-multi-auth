@@ -33,7 +33,9 @@ class HomeController extends Controller
         }
         else{
             return redirect()->to ('logout');
+            //route('logout')
         }
        // return view('home');
     }
+    
 }
